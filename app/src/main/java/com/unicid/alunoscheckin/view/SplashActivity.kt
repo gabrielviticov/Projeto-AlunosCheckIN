@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import com.unicid.alunoscheckin.R
 
 class SplashActivity : AppCompatActivity() {
@@ -20,5 +21,7 @@ class SplashActivity : AppCompatActivity() {
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             finish()
         },3000)
+
+        Toast.makeText(applicationContext, "SplashActivity!!!", Toast.LENGTH_LONG).show()
     }
 }
