@@ -1,14 +1,15 @@
 package com.unicid.alunoscheckin.model;
 
 public class Alunos {
+
     private Integer id;
     private String registroAluno;
     private String nomeCompleto;
-    private Integer cpf;
+    private String cpf;
     private String sexo;
     private String dtaNascimento;
     private String email;
-    private Integer telefone;
+    private String telefone;
     private String senha;
 
     public Alunos(){}
@@ -37,11 +38,11 @@ public class Alunos {
         this.nomeCompleto = nomeCompleto;
     }
 
-    public Integer getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Integer cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -69,11 +70,11 @@ public class Alunos {
         this.email = email;
     }
 
-    public Integer getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 

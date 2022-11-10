@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             finish()
-        },3000)
+        },1000)
 
         Toast.makeText(applicationContext, "SplashActivity!!!", Toast.LENGTH_LONG).show()
     }
