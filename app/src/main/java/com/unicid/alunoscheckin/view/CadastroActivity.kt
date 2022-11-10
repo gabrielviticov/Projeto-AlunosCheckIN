@@ -16,7 +16,8 @@ import com.unicid.alunoscheckin.controller.AlunosController
 import com.unicid.alunoscheckin.model.Alunos
 
 class CadastroActivity : AppCompatActivity() {
-
+    //lateinit - variaveis de inicialização
+    
     lateinit var editRegistro: EditText
     lateinit var editNome: EditText
     lateinit var editCpf: EditText
