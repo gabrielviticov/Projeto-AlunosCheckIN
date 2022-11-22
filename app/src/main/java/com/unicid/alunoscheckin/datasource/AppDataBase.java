@@ -29,14 +29,21 @@ public class AppDataBase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         try {
-            sqLiteDatabase.execSQL(AlunosDataModel.queryCreateTable());
-            Log.i(TAG, "onCreate: "+AlunosDataModel.queryCreateTable());
-
             sqLiteDatabase.execSQL(DisciplinasDataModel.queryCreateTable());
             Log.i(TAG, "onCreate: "+DisciplinasDataModel.queryCreateTable());
 
+            sqLiteDatabase.execSQL(AlunosDataModel.queryCreateTable());
+            Log.i(TAG, "onCreate: "+AlunosDataModel.queryCreateTable());
+
             sqLiteDatabase.execSQL(CursaDataModel.queryCreateTable());
-            Log.i(TAG, "onCreate: "+DisciplinasDataModel.queryCreateTable());
+            Log.i(TAG, "onCreate: "+CursaDataModel.queryCreateTable());
+
+
+
+
+            sqLiteDatabase.execSQL(DisciplinasDataModel.queryInsertInto("PRJ67M", "PROJETO INTERDISCIPLINAR III", 120));
+
+            Log.i(TAG, "onCreate: "+DisciplinasDataModel.queryInsertInto("PRJ67M", "PROJETO INTERDISCIPLINAR III", 120));
         } catch(SQLiteException e){
             Log.e(TAG, "onCreate: "+e.getMessage());
         }

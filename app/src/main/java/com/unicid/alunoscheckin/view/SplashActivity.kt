@@ -1,13 +1,14 @@
 package com.unicid.alunoscheckin.view
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.Toast
 import com.unicid.alunoscheckin.R
 
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,10 +19,10 @@ class SplashActivity : AppCompatActivity() {
 
     fun trocarTela(){
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
             finish()
         },1000)
 
-        Toast.makeText(applicationContext, "SplashActivity!!!", Toast.LENGTH_LONG).show()
+
     }
 }

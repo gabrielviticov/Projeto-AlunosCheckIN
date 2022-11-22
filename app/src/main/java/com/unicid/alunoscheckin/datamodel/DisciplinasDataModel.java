@@ -15,7 +15,19 @@ public class DisciplinasDataModel {
         query += NOME_DISCIPLINA+" TEXT NOT NULL, ";
         query += CARGA_HORARIA+" INTEGER DEFAULT 30 ";
         query += " ) ";
+        return query;
+    }
+
+    public static String queryInsertInto(String registro, String nome, Integer carga){
+        query += "INSERT INTO "+TABELA+" ( REGISTRO_DISCIPLINA, NOME_DISCIPLINA, CARGA_HORARIA )";
+        query += " VALUES ";
+        query += "( ";
+        query += "\'"+registro+"\', ";
+        query += "\'"+nome+"\', ";
+        query += carga+" ) ";
 
         return query;
     }
+
+    
 }

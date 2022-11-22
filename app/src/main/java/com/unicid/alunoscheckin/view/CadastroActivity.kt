@@ -3,17 +3,16 @@ package com.unicid.alunoscheckin.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.text.TextUtils
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.RadioButton
 import android.widget.Toast
 import com.unicid.alunoscheckin.R
 import com.unicid.alunoscheckin.controller.AlunosController
+import com.unicid.alunoscheckin.controller.DisciplinasController
 import com.unicid.alunoscheckin.model.Alunos
+import com.unicid.alunoscheckin.model.Disciplinas
 
 class CadastroActivity : AppCompatActivity() {
     //lateinit - variaveis de inicialização
@@ -34,6 +33,9 @@ class CadastroActivity : AppCompatActivity() {
     lateinit var a1: Alunos
     lateinit var ac: AlunosController
 
+    lateinit var d1: Disciplinas
+    lateinit var dc: DisciplinasController
+
     val TAG: String = "@ALUNOS_CHECKIN"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +45,7 @@ class CadastroActivity : AppCompatActivity() {
         findElementsDeclared()
         customizeElements()
         eventsButton()
+
     }
 
     fun findElementsDeclared(){
@@ -108,6 +111,15 @@ class CadastroActivity : AppCompatActivity() {
                         editSenha.text.clear()
 
                         editRegistro.requestFocus()
+
+                        d1 = Disciplinas()
+                        dc = DisciplinasController(applicationContext)
+
+                        d1.registro = "PJI66I"
+                        d1.nome = "Projeto Interdisciplinar II"
+                        d1.cargaHoraria = 120
+
+                        if(dc.inserir(d1)){ Toast.makeText(applicationContext, "A disciplina: "+d1.nome+" foi adicionada com sucesso!", Toast.LENGTH_LONG).show() }
                     }
                 } catch(e: java.lang.Exception){
                     Log.e(TAG, "eventsButton: error: "+e.message)
@@ -116,10 +128,12 @@ class CadastroActivity : AppCompatActivity() {
         }
 
         btnVoltar.setOnClickListener {
-            startActivity(Intent(this@CadastroActivity, MainActivity::class.java))
+            startActivity(Intent(this@CadastroActivity, LoginActivity::class.java))
             finish()
         }
     }
+
+
 
 
 }
