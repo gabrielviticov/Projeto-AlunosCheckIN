@@ -25,7 +25,6 @@ public class DisciplinasDataModel {
         query += "\'"+registro+"\', ";
         query += "\'"+nome+"\', ";
         query += carga+" ) ";
-
         return query;
     }
 

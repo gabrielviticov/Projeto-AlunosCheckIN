@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -118,8 +119,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     String rgm = editRgm.getText().toString();
                     String senha = editSenha.getText().toString();
 
-                    if(rgm.equals("xyz123") && senha.equals("xyz123")){
-                        Toast.makeText(LoginActivity.this, "Login Bem-Sucedido!", Toast.LENGTH_SHORT).show();
+                    if(rgm.equals("ER98E4") || rgm.equals("MR56P4") || rgm.equals("SE70W2") || rgm.equals("JH74K1")){
+
                     }
                 }
 
@@ -145,4 +146,5 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     public void onConnectionSuspended(int i) {
 
     }
+
 }

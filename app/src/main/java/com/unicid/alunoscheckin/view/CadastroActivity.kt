@@ -112,14 +112,7 @@ class CadastroActivity : AppCompatActivity() {
 
                         editRegistro.requestFocus()
 
-                        d1 = Disciplinas()
-                        dc = DisciplinasController(applicationContext)
 
-                        d1.registro = "PJI66I"
-                        d1.nome = "Projeto Interdisciplinar II"
-                        d1.cargaHoraria = 120
-
-                        if(dc.inserir(d1)){ Toast.makeText(applicationContext, "A disciplina: "+d1.nome+" foi adicionada com sucesso!", Toast.LENGTH_LONG).show() }
                     }
                 } catch(e: java.lang.Exception){
                     Log.e(TAG, "eventsButton: error: "+e.message)
