@@ -56,7 +56,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         findElementsByID();
+        startApplication();
         forceFields();
         recaptchaSystem();
 
@@ -64,6 +66,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         alunosController = new AlunosController(getApplicationContext());
 
 
+    }
+
+    protected void startApplication(){
+        btnEntrar.setEnabled(false);
     }
 
     protected void recaptchaSystem(){
@@ -86,6 +92,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                     }
                                 }
                             });
+
+                    btnEntrar.setEnabled(true);
                 }else{
                     Toast.makeText(LoginActivity.this,"falha",Toast.LENGTH_SHORT).show();
                     ckCaptcha.setTextColor(Color.RED);
@@ -119,8 +127,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     String rgm = editRgm.getText().toString();
                     String senha = editSenha.getText().toString();
 
-                    if(rgm.equals("ER98E4") || rgm.equals("MR56P4") || rgm.equals("SE70W2") || rgm.equals("JH74K1")){
-
+                    if(rgm.equals("ER98E4") || rgm.equals("er98e4")){
+                        if(senha.equals("3304578")){
+                            intent = new Intent(LoginActivity.this, AlunoDashboard.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    } if(rgm.equals("MR56P4") || rgm.equals("mr56p4")){
+                        if(senha.equals("103050")){
+                            intent = new Intent(LoginActivity.this, AlunoDashboard.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
                 }
 

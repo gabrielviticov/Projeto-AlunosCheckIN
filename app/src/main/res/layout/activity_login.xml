@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#a0bbf1"
     tools:context=".view.LoginActivity" >
 
     <LinearLayout
@@ -24,6 +25,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Seu RGM: "
+            android:textColorHint="@color/black"
             android:imeOptions="actionNext"
             />
 
@@ -36,6 +38,7 @@
             android:ems="10"
             android:inputType="textPassword"
             android:hint="Sua Senha: "
+            android:textColorHint="@color/black"
             android:imeOptions="actionDone"
             />
 
@@ -44,18 +47,20 @@
             android:layout_width="match_parent"
             android:layout_margin="10dp"
             android:layout_height="60dp"
+            android:background="@color/teal_700"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/recaptcha_logo"/>
+                android:src="@drawable/recaptcha_logo" />
 
             <CheckBox
                 android:id="@+id/ckCaptcha"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="I'm not a robot"
+                android:textColor="@color/black"
                 android:textSize="16sp"/>
         </LinearLayout>
 
