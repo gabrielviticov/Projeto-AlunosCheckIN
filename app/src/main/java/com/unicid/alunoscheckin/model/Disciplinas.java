@@ -6,7 +6,7 @@ public class Disciplinas {
     private String nome;
     private Integer cargaHoraria;
 
-    public Disciplinas(){}
+    public Disciplinas(String projeto_interdisciplinar_i){}
     public Disciplinas(Integer id, String registro, String nome, Integer cargaHoraria){
         this.setId(id);
         this.setRegistro(registro);

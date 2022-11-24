@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#a0bbf1"
+    android:scrollbarSize="4dp"
+
+    tools:context=".view.AlunosDashboard" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtPrj1"
+            android:background="#8BC34A"
+            android:layout_marginTop="120dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Projeto Interdisciplinar I" />
+
+        <TextView
+
+            android:id="@+id/txtPrj2"
+            android:layout_marginTop="10dp"
+            android:background="#8BC34A"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Projeto Interdisciplinar II" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/txtPrj3"
+            android:layout_width="match_parent"
+            android:background="#8BC34A"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Projeto Interdisciplinar III" />
+
+        <TextView
+            android:id="@+id/txtPrj4"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:background="#8BC34A"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Projeto Interdisciplinar IV" />
+
+        <TextView
+            android:id="@+id/txtAlp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:background="#8BC34A"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Algoritmo e Lógica de Programação " />
+
+        <TextView
+            android:id="@+id/txtBd"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:background="#8BC34A"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Banco de Dados" />
+
+        <TextView
+            android:id="@+id/txtAps1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#8BC34A"
+            android:clickable="true"
+            android:text="Análise e Projeto de Sistemas I" />
+
+        <TextView
+            android:id="@+id/txtAps2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#8BC34A"
+            android:clickable="true"
+            android:text="Análise e Projeto de Sistemas II" />
+
+        <Button
+            android:id="@+id/btnNext"
+            android:gravity="right"
+            android:background="#8BC34A"
+            android:layout_width="75dp"
+            android:text="Next"
+            android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_baseline_navigate_next_24" />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

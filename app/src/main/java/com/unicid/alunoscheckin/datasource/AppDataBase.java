@@ -2,6 +2,7 @@ package com.unicid.alunoscheckin.datasource;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -12,6 +13,7 @@ import com.unicid.alunoscheckin.datamodel.CursaDataModel;
 import com.unicid.alunoscheckin.datamodel.DisciplinasDataModel;
 import com.unicid.alunoscheckin.model.Alunos;
 import com.unicid.alunoscheckin.model.Disciplinas;
+import com.unicid.alunoscheckin.view.LoginActivity;
 
 public class AppDataBase extends SQLiteOpenHelper {
 
@@ -39,6 +41,8 @@ public class AppDataBase extends SQLiteOpenHelper {
             sqLiteDatabase.execSQL(CursaDataModel.queryCreateTable());
             Log.i(TAG, "onCreate: "+CursaDataModel.queryCreateTable());
 
+
+
         } catch(SQLiteException e){
             Log.e(TAG, "onCreate: "+e.getMessage());
         }
@@ -60,6 +64,5 @@ public class AppDataBase extends SQLiteOpenHelper {
 
         return result;
     }
-
 
 }

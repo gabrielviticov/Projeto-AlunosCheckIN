@@ -29,18 +29,19 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.unicid.alunoscheckin.R;
 import com.unicid.alunoscheckin.controller.AlunosController;
 import com.unicid.alunoscheckin.controller.DisciplinasController;
+import com.unicid.alunoscheckin.datasource.AppDataBase;
 import com.unicid.alunoscheckin.model.Alunos;
 import com.unicid.alunoscheckin.model.Disciplinas;
 
 import java.util.HashMap;
 import java.util.concurrent.Executor;
 
-public class LoginActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks {
+public class LoginActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks{
 
     Button btnEntrar;
     Button btnCadastrar;
-    EditText editRgm;
-    EditText editSenha;
+    public static EditText editRgm;
+    public static EditText editSenha;
     Intent intent;
     CheckBox ckCaptcha;
     GoogleApiClient googleApiClient;
@@ -109,7 +110,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         editRgm = findViewById(R.id.editRgm);
         editSenha = findViewById(R.id.editSenha);
         ckCaptcha = findViewById(R.id.ckCaptcha);
-
     }
 
     protected void forceFields(){
@@ -127,18 +127,51 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     String rgm = editRgm.getText().toString();
                     String senha = editSenha.getText().toString();
 
+
                     if(rgm.equals("ER98E4") || rgm.equals("er98e4")){
                         if(senha.equals("3304578")){
-                            intent = new Intent(LoginActivity.this, AlunoDashboard.class);
+                            intent = new Intent(LoginActivity.this, AlunosDashboard.class);
                             startActivity(intent);
                             finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
                         }
-                    } if(rgm.equals("MR56P4") || rgm.equals("mr56p4")){
+                    } else {
+                        Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    if(rgm.equals("MR56P4") || rgm.equals("mr56p4")){
                         if(senha.equals("103050")){
-                            intent = new Intent(LoginActivity.this, AlunoDashboard.class);
+                            intent = new Intent(LoginActivity.this, AlunosDashboard.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    if(rgm.equals("SE70W2") || rgm.equals("se70w2")){
+                        if(senha.equals("santana3030")){
+                            intent = new Intent(LoginActivity.this, AlunosDashboard.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    if(rgm.equals("JH74K1") || rgm.equals("jh74k1")){
+                        if(senha.equals("maria123")){
+                            intent = new Intent(LoginActivity.this, AlunosDashboard.class);
                             startActivity(intent);
                             finish();
                         }
+                    } else {
+                        Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -154,6 +187,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
         });
     }
+
+
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {

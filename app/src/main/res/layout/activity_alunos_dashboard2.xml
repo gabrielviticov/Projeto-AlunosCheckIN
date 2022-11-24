@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#a0bbf1"
+    android:scrollbarSize="4dp"
+
+    tools:context=".view.AlunosDashboard2" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtPre1"
+            android:background="#8BC34A"
+            android:layout_marginTop="120dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Programação Estuturada I" />
+
+        <TextView
+
+            android:id="@+id/txtPre2"
+            android:layout_marginTop="10dp"
+            android:background="#8BC34A"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Programação Estruturada II" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/txtPoo1"
+            android:layout_width="match_parent"
+            android:background="#8BC34A"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Programação Orientada a Objetos I" />
+
+        <TextView
+            android:id="@+id/txtPoo2"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:background="#8BC34A"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Programação Orientada a Objetos II" />
+
+        <TextView
+            android:id="@+id/txtEng1"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:background="#8BC34A"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Engenharia de Software I" />
+
+        <TextView
+            android:id="@+id/txtEng2"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:background="#8BC34A"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Engenharia de Software II" />
+
+        <TextView
+            android:id="@+id/txtEst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#8BC34A"
+            android:clickable="true"
+            android:text="Estrutura de Dados" />
+
+        <TextView
+            android:id="@+id/txtPrw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#8BC34A"
+            android:clickable="true"
+            android:text="Programação Web" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:gravity="right"
+            android:background="#8BC34A"
+            android:layout_width="75dp"
+            android:text="Back"
+            android:layout_gravity="left"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_baseline_navigate_next_24" />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
