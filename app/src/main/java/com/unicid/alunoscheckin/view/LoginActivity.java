@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     String rgm = editRgm.getText().toString();
                     String senha = editSenha.getText().toString();
 
-
+                    /*
                     if(rgm.equals("ER98E4") || rgm.equals("er98e4")){
                         if(senha.equals("3304578")){
                             intent = new Intent(LoginActivity.this, AlunosDashboard.class);
@@ -136,8 +136,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         } else {
                             Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
                     }
 
                     if(rgm.equals("MR56P4") || rgm.equals("mr56p4")){
@@ -148,8 +146,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         } else {
                             Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
                     }
 
                     if(rgm.equals("SE70W2") || rgm.equals("se70w2")){
@@ -160,8 +156,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         } else {
                             Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
                     }
 
                     if(rgm.equals("JH74K1") || rgm.equals("jh74k1")){
@@ -170,9 +164,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             startActivity(intent);
                             finish();
                         }
-                    } else {
-                        Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
                     }
+                    */
+                if(alunos.getRegistroAluno().equals(rgm)){
+                    if(alunos.getSenha().equals(senha)){
+                        intent = new Intent(LoginActivity.this, AlunosDashboard.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+
+
                 }
 
             }

@@ -2,17 +2,20 @@ package com.unicid.alunoscheckin.datasource;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.unicid.alunoscheckin.datamodel.AlunosDataModel;
 import com.unicid.alunoscheckin.datamodel.CursaDataModel;
 import com.unicid.alunoscheckin.datamodel.DisciplinasDataModel;
 import com.unicid.alunoscheckin.model.Alunos;
 import com.unicid.alunoscheckin.model.Disciplinas;
+import com.unicid.alunoscheckin.view.AlunosDashboard;
 import com.unicid.alunoscheckin.view.LoginActivity;
 
 public class AppDataBase extends SQLiteOpenHelper {
@@ -20,6 +23,7 @@ public class AppDataBase extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "INSTITUICAO.sqlite";
     public static final Integer DATABASE_VERSION = 1;
     public static final String TAG = "@ALUNOS_CHECKIN";
+    static Intent intent;
 
     static SQLiteDatabase sqLiteDatabase;
 
@@ -63,6 +67,23 @@ public class AppDataBase extends SQLiteOpenHelper {
         }
 
         return result;
+    }
+
+    public static String autenticaUsuario(Alunos alunos){
+
+        String query_select = "SELECT * FROM ALUNOS WHERE REGISTRO_ALUNO = '"+LoginActivity.editRgm.getText().toString()+"' AND SENHA = '"+LoginActivity.editSenha.getText().toString()+"' ";
+
+        Cursor cursor = sqLiteDatabase.rawQuery(query_select, null);
+        while(cursor.moveToNext()){
+            if(alunos.getRegistroAluno().equals(cursor.getColumnIndex("REGISTRO_ALUNO"))){
+                if(alunos.getSenha().equals(cursor.getColumnIndex("SENHA"))){
+                    return "sucesso autenticação";
+                }
+            }
+        }
+
+        cursor.close();
+        return "falhou autenticação";
     }
 
 }

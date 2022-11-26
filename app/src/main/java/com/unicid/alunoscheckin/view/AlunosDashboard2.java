@@ -114,7 +114,9 @@ public class AlunosDashboard2 extends AppCompatActivity {
         txtPrw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                intent = new Intent(AlunosDashboard2.this, ScanActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

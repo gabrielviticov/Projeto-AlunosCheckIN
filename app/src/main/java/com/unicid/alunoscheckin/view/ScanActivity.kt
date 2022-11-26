@@ -17,7 +17,7 @@ class ScanActivity : AppCompatActivity() {
             Toast.makeText(this, intentResult.contents, Toast.LENGTH_LONG).show()
             val navegador = Intent(Intent.ACTION_VIEW)
             navegador.data = Uri.parse(intentResult.contents)
-            startActivity(navegador)
+            //startActivity(navegador)
         }
     }
 
