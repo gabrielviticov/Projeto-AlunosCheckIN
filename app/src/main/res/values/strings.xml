@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Alunos CheckIn</string>
+    <string name="entar">Entrar</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="title_cadastro">Cadastre-se</string>
+    <string name="voltar">Voltar</string>
 </resources>

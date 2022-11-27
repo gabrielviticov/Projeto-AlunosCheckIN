@@ -38,6 +38,7 @@ import java.util.concurrent.Executor;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks{
 
+
     Button btnEntrar;
     Button btnCadastrar;
     public static EditText editRgm;
@@ -57,6 +58,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        getSupportActionBar().hide();
 
         findElementsByID();
         startApplication();
