@@ -1,5 +1,6 @@
 package com.unicid.alunoscheckin.datasource;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -8,15 +9,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.unicid.alunoscheckin.datamodel.AlunosDataModel;
 import com.unicid.alunoscheckin.datamodel.CursaDataModel;
 import com.unicid.alunoscheckin.datamodel.DisciplinasDataModel;
-import com.unicid.alunoscheckin.model.Alunos;
-import com.unicid.alunoscheckin.model.Disciplinas;
-import com.unicid.alunoscheckin.view.AlunosDashboard;
-import com.unicid.alunoscheckin.view.LoginActivity;
 
 public class AppDataBase extends SQLiteOpenHelper {
 
@@ -78,6 +74,23 @@ public class AppDataBase extends SQLiteOpenHelper {
             return true;
         } else {
             return false;
+        }
+    }
+
+    @SuppressLint("Range")
+    public static String boasVindasUsuario(String rgm){
+        cursor = sqLiteDatabase.rawQuery("SELECT NOME_COMPLETO FROM ALUNOS WHERE REGISTRO_ALUNO = ?", new String[] {rgm});
+
+        String name_result = "";
+
+        if(cursor.moveToFirst()){
+            name_result = cursor.getString(cursor.getColumnIndex("NOME_COMPLETO"));
+        }
+
+        if(cursor.getCount() > 0){
+            return name_result;
+        } else {
+            return name_result;
         }
     }
 
