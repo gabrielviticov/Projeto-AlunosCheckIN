@@ -1,37 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#a0bbf1"
+    android:background="@drawable/background"
     tools:context=".view.ScanActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="300dp"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        >
 
-        <Button
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/barra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/azul2"
+            app:title="Historico de Frequencia "
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/containerUser"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/container_user"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barra"
+            android:layout_marginTop="30dp"/>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_user"
+            app:layout_constraintStart_toStartOf="@+id/containerUser"
+            app:layout_constraintEnd_toEndOf="@id/containerUser"
+            app:layout_constraintTop_toTopOf="@id/containerUser"
+            app:layout_constraintBottom_toBottomOf="@id/containerUser"/>
+
+
+        <ImageView
+            android:id="@+id/iconeUser"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_user"
+            app:layout_constraintTop_toBottomOf="@id/containerUser"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            />
+
+        <TextView
+            android:id="@+id/textNomeUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/containerUser"
+            app:layout_constraintStart_toEndOf="@id/iconeUser"
+
+            />
+
+
+        <ImageView
+            android:id="@+id/iconeCurso"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_livro"
+            app:layout_constraintTop_toBottomOf="@id/iconeUser"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/textNomeCurso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADS"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/textNomeUsuario"
+            app:layout_constraintStart_toEndOf="@id/iconeCurso"
+
+            />
+
+
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textNomeCurso"
+            android:layout_marginTop="30dp"
+            android:background="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pressença: "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+
+            app:layout_constraintTop_toBottomOf="@+id/spinner"
+            tools:ignore="MissingConstraints" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnFechar"
+            android:background="@color/azul2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:text="Button" />
+            android:src="@drawable/ic_user"
+            app:layout_constraintTop_toBottomOf="@id/spinner"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="270dp"
+            android:layout_marginTop="200dp"
+            android:text="Sair"
 
-        <Button
+            tools:layout_editor_absoluteX="250dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnRelatorio"
+            android:background="@color/azul2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:text="Button" />
-    </LinearLayout>
-</LinearLayout>
+            android:src="@drawable/ic_user"
+            app:layout_constraintTop_toBottomOf="@id/spinner"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="200dp"
+            android:text="Voltar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
