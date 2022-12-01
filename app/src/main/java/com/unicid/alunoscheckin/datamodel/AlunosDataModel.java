@@ -30,4 +30,11 @@ public class AlunosDataModel {
 
         return query;
     }
+
+    public static String querySelect(Integer id){
+
+        query += "SELECT REGISTRO_ALUNO FROM ALUNOS WHERE ID = '"+id+"' ";
+
+        return query;
+    }
 }

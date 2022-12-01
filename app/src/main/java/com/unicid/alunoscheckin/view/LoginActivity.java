@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,26 +18,26 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.CommonStatusCodes;
+
+
 import com.google.android.gms.common.api.GoogleApiClient;
+
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.safetynet.SafetyNet;
 import com.google.android.gms.safetynet.SafetyNetApi;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+
 import com.unicid.alunoscheckin.R;
 import com.unicid.alunoscheckin.controller.AlunosController;
 import com.unicid.alunoscheckin.controller.DisciplinasController;
+
 import com.unicid.alunoscheckin.datasource.AppDataBase;
 import com.unicid.alunoscheckin.model.Alunos;
 import com.unicid.alunoscheckin.model.Disciplinas;
 
-import java.util.HashMap;
-import java.util.concurrent.Executor;
 
-public class LoginActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks{
+
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.ConnectionCallbacks {
 
 
     Button btnEntrar;
@@ -45,13 +46,25 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     public static EditText editSenha;
     Intent intent;
     CheckBox ckCaptcha;
-    GoogleApiClient googleApiClient;
-    String site ="6LfHrSAjAAAAABkDCci1ufEujimvBlVTCKIuRaq2";
+
     Disciplinas disciplinas;
     DisciplinasController disciplinasController;
     Alunos alunos;
     AlunosController alunosController;
     public static final String TAG = "@ALUNOS_CHECKIN";
+    String return_rgm;
+    String return_senha;
+    AppDataBase appDataBase;
+    SQLiteDatabase sqLiteDatabase;
+    GoogleApiClient googleApiClient;
+
+    String copiaChave = "6LcvGEojAAAAAETcsvE1uIeCrzUYu3KNT5gNv6kl";
+    String chaveSite = "6LcvGEojAAAAAETcsvE1uIeCrzUYu3KNT5gNv6kl";
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         findElementsByID();
         startApplication();
         forceFields();
-        recaptchaSystem();
+
 
         disciplinasController = new DisciplinasController(getApplicationContext());
         alunosController = new AlunosController(getApplicationContext());
@@ -71,40 +84,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     }
 
+
+
     protected void startApplication(){
         btnEntrar.setEnabled(false);
     }
 
-    protected void recaptchaSystem(){
-        googleApiClient= new GoogleApiClient.Builder(this).addApi(SafetyNet.API).addConnectionCallbacks(LoginActivity.this)
-                .build();
-        googleApiClient.connect();
 
-        ckCaptcha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(ckCaptcha.isChecked()){
-                    SafetyNet.SafetyNetApi.verifyWithRecaptcha(googleApiClient,site)
-                            .setResultCallback(new ResultCallback<SafetyNetApi.RecaptchaTokenResult>() {
-                                @Override
-                                public void onResult(@NonNull SafetyNetApi.RecaptchaTokenResult recaptchaTokenResult) {
-                                    Status status = recaptchaTokenResult.getStatus();
-                                    if ((status!=null) && status.isSuccess()){
-                                        Toast.makeText(LoginActivity.this,"sucesso",Toast.LENGTH_SHORT).show();
-                                        ckCaptcha.setTextColor(Color.BLUE);
-                                    }
-                                }
-                            });
-
-                    btnEntrar.setEnabled(true);
-                }else{
-                    Toast.makeText(LoginActivity.this,"falha",Toast.LENGTH_SHORT).show();
-                    ckCaptcha.setTextColor(Color.RED);
-                }
-            }
-        });
-
-    }
 
     protected void findElementsByID(){
         btnEntrar = findViewById(R.id.btnEntrar);
@@ -115,6 +101,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     protected void forceFields(){
+
+
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,57 +114,30 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 } if(TextUtils.isEmpty(editSenha.getText().toString())){
                     editSenha.setError("*");
                 } else {
+
                     String rgm = editRgm.getText().toString();
                     String senha = editSenha.getText().toString();
 
-                    /*
-                    if(rgm.equals("ER98E4") || rgm.equals("er98e4")){
-                        if(senha.equals("3304578")){
-                            intent = new Intent(LoginActivity.this, AlunosDashboard.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                    appDataBase = new AppDataBase(getApplicationContext());
 
-                    if(rgm.equals("MR56P4") || rgm.equals("mr56p4")){
-                        if(senha.equals("103050")){
-                            intent = new Intent(LoginActivity.this, AlunosDashboard.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                    Boolean validar = AppDataBase.validarLogin(rgm, senha);
 
-                    if(rgm.equals("SE70W2") || rgm.equals("se70w2")){
-                        if(senha.equals("santana3030")){
-                            intent = new Intent(LoginActivity.this, AlunosDashboard.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
 
-                    if(rgm.equals("JH74K1") || rgm.equals("jh74k1")){
-                        if(senha.equals("maria123")){
-                            intent = new Intent(LoginActivity.this, AlunosDashboard.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-                    */
-                if(alunos.getRegistroAluno().equals(rgm)){
-                    if(alunos.getSenha().equals(senha)){
+                    if(validar){
+                        Toast.makeText(LoginActivity.this,  "Seja bem Vindo: "+AppDataBase.boasVindasUsuario(rgm), Toast.LENGTH_SHORT).show();
+
+                        editRgm.setTextColor(Color.GREEN);
+                        editSenha.setTextColor(Color.GREEN);
+
                         intent = new Intent(LoginActivity.this, AlunosDashboard.class);
                         startActivity(intent);
                         finish();
+                    } else {
+
+                        editRgm.setError("RGM e/ou Senha incorretos!");
+                        editSenha.setError("Usuário não encontrado. Por favor, informe as credenciais corretamente!");
+
                     }
-                }
-
-
                 }
 
             }
@@ -190,9 +151,45 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 finish();
             }
         });
+
+
+
+        googleApiClient = new GoogleApiClient.Builder(this).addApi(SafetyNet.API).addConnectionCallbacks(LoginActivity.this).build();
+
+        googleApiClient.connect();
+
+        ckCaptcha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ckCaptcha.isChecked()){
+                    SafetyNet.SafetyNetApi.verifyWithRecaptcha(googleApiClient, chaveSite).setResultCallback(new ResultCallback<SafetyNetApi.RecaptchaTokenResult>() {
+                        @Override
+                        public void onResult(@NonNull SafetyNetApi.RecaptchaTokenResult recaptchaTokenResult) {
+
+                            Status status = recaptchaTokenResult.getStatus();
+
+                            if((status!=null) && status.isSuccess()){
+                                Toast.makeText(LoginActivity.this, "Sucesso!!!", Toast.LENGTH_SHORT).show();
+
+                                ckCaptcha.setTextColor(Color.GREEN);
+
+                            }
+                        }
+                    });
+                    btnEntrar.setEnabled(true);
+                } else {
+                    ckCaptcha.setTextColor(Color.RED);
+                    Toast.makeText(LoginActivity.this, "Sem sucesso", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 
+    @Override
+    public void onClick(View view) {
+
+    }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
@@ -203,5 +200,4 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     public void onConnectionSuspended(int i) {
 
     }
-
 }

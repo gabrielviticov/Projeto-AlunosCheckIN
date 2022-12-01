@@ -1,5 +1,6 @@
 package com.unicid.alunoscheckin.datasource;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -8,15 +9,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.unicid.alunoscheckin.datamodel.AlunosDataModel;
 import com.unicid.alunoscheckin.datamodel.CursaDataModel;
 import com.unicid.alunoscheckin.datamodel.DisciplinasDataModel;
-import com.unicid.alunoscheckin.model.Alunos;
-import com.unicid.alunoscheckin.model.Disciplinas;
-import com.unicid.alunoscheckin.view.AlunosDashboard;
-import com.unicid.alunoscheckin.view.LoginActivity;
 
 public class AppDataBase extends SQLiteOpenHelper {
 
@@ -26,6 +22,7 @@ public class AppDataBase extends SQLiteOpenHelper {
     static Intent intent;
 
     static SQLiteDatabase sqLiteDatabase;
+    static Cursor cursor;
 
     public AppDataBase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -45,6 +42,7 @@ public class AppDataBase extends SQLiteOpenHelper {
             sqLiteDatabase.execSQL(CursaDataModel.queryCreateTable());
             Log.i(TAG, "onCreate: "+CursaDataModel.queryCreateTable());
 
+            sqLiteDatabase.execSQL("SELECT REGISTRO_ALUNO FROM ALUNOS WHERE ID = 1");
 
 
         } catch(SQLiteException e){
@@ -69,21 +67,33 @@ public class AppDataBase extends SQLiteOpenHelper {
         return result;
     }
 
-    public static String autenticaUsuario(Alunos alunos){
+    public static Boolean validarLogin(String rgm, String senha){
+        cursor = sqLiteDatabase.rawQuery("SELECT REGISTRO_ALUNO, SENHA FROM ALUNOS WHERE REGISTRO_ALUNO = ? AND SENHA = ?", new String[] {rgm, senha});
 
-        String query_select = "SELECT * FROM ALUNOS WHERE REGISTRO_ALUNO = '"+LoginActivity.editRgm.getText().toString()+"' AND SENHA = '"+LoginActivity.editSenha.getText().toString()+"' ";
+        if(cursor.getCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-        Cursor cursor = sqLiteDatabase.rawQuery(query_select, null);
-        while(cursor.moveToNext()){
-            if(alunos.getRegistroAluno().equals(cursor.getColumnIndex("REGISTRO_ALUNO"))){
-                if(alunos.getSenha().equals(cursor.getColumnIndex("SENHA"))){
-                    return "sucesso autenticação";
-                }
-            }
+    @SuppressLint("Range")
+    public static String boasVindasUsuario(String rgm){
+        cursor = sqLiteDatabase.rawQuery("SELECT NOME_COMPLETO FROM ALUNOS WHERE REGISTRO_ALUNO = ?", new String[] {rgm});
+
+        String name_result = "";
+
+        if(cursor.moveToFirst()){
+            name_result = cursor.getString(cursor.getColumnIndex("NOME_COMPLETO"));
         }
 
-        cursor.close();
-        return "falhou autenticação";
+        if(cursor.getCount() > 0){
+            return name_result;
+        } else {
+            return name_result;
+        }
     }
+
+
 
 }

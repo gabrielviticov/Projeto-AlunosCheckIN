@@ -26,6 +26,8 @@ public class AlunosDashboard extends AppCompatActivity {
     TextView Aps2;
     Button btnNext;
     Intent intent;
+    Integer qntPresenca = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +53,15 @@ public class AlunosDashboard extends AppCompatActivity {
 
     }
 
+
+
     protected void navigatorTextViews(){
         prj1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intent = new Intent(AlunosDashboard.this, ScanActivity.class);
+                qntPresenca += 1;
+                intent.putExtra("presenca", qntPresenca);
                 startActivity(intent);
                 finish();
             }
@@ -65,6 +71,8 @@ public class AlunosDashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(AlunosDashboard.this, ScanActivity.class);
+                qntPresenca += 1;
+                intent.putExtra("presenca", qntPresenca);
                 startActivity(intent);
                 finish();
             }
@@ -74,6 +82,8 @@ public class AlunosDashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(AlunosDashboard.this, ScanActivity.class);
+                qntPresenca += 1;
+                intent.putExtra("presenca", qntPresenca);
                 startActivity(intent);
                 finish();
             }
@@ -132,6 +142,7 @@ public class AlunosDashboard extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
 
