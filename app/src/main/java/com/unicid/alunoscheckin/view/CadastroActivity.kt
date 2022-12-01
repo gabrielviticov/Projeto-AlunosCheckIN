@@ -1,18 +1,21 @@
 package com.unicid.alunoscheckin.view
 
+import android.app.DatePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.unicid.alunoscheckin.R
 import com.unicid.alunoscheckin.controller.AlunosController
 import com.unicid.alunoscheckin.controller.DisciplinasController
 import com.unicid.alunoscheckin.model.Alunos
 import com.unicid.alunoscheckin.model.Disciplinas
+import java.util.*
 
 class CadastroActivity : AppCompatActivity() {
     //lateinit - variaveis de inicialização
@@ -46,6 +49,27 @@ class CadastroActivity : AppCompatActivity() {
         customizeElements()
         eventsButton()
 
+        supportActionBar!!.hide()
+
+        var dateEdt = findViewById<EditText>(R.id.editDtaNascimento)
+
+
+        dateEdt.setOnClickListener(View.OnClickListener {
+            val c = Calendar.getInstance()
+            val year = c[Calendar.YEAR]
+            val month = c[Calendar.MONTH]
+            val day = c[Calendar.DAY_OF_MONTH]
+            val datePickerDialog = DatePickerDialog( // on below line we are passing context.
+                this ,
+                { view, year, monthOfYear, dayOfMonth -> // on below line we are setting date to our edit text.
+                    dateEdt.setText(dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+                },
+                year, month, day
+            )
+           
+            datePickerDialog.show()
+        })
+
     }
 
     fun findElementsDeclared(){
@@ -64,13 +88,15 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     fun customizeElements(){
-        editRegistro.hint = "Seu RGM: "
-        editNome.hint = "Seu Nome: "
-        editCpf.hint = "Seu CPF: "
-        editDtaNascimento.hint = "Sua data de nascimento: "
-        editEmail.hint = "Seu endereço de e-mail: "
-        editTelefone.hint = "Seu número de telefone: "
-        editSenha.hint = "Sua senha: "
+
+        editRegistro.hint = "RGM: "
+        editNome.hint = "Nome: "
+        editCpf.hint = "CPF: "
+        editDtaNascimento.hint = "Data de nascimento: "
+        editEmail.hint = "E-mail: "
+        editTelefone.hint = "Telefone: "
+        editSenha.hint = "Senha: "
+
 
 
         btnCadastrar.text = "Cadastrar"

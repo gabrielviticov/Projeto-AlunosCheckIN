@@ -39,6 +39,7 @@ import com.unicid.alunoscheckin.model.Disciplinas;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.ConnectionCallbacks {
 
+
     Button btnEntrar;
     Button btnCadastrar;
     public static EditText editRgm;
@@ -70,6 +71,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        getSupportActionBar().hide();
 
         findElementsByID();
         startApplication();

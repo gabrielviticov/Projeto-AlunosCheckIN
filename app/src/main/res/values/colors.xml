@@ -10,4 +10,9 @@
     <color name="dark_blue">#022873</color>
     <color name="middle_blue">#469EDA</color>
     <color name="light_blue">#90CAF9</color>
+
+    <color name="azul1">#81c9fa</color>
+    <color name="azul2">#2196f3</color>
+    <color name="azul3">#1465bb</color>
+    <color name="azul4">#003785</color>
 </resources>

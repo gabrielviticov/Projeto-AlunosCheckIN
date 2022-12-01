@@ -1,59 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.LoginActivity"
+    android:background="@drawable/background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#a0bbf1"
-    tools:context=".view.LoginActivity" >
+    tools:context=".view.LoginActivity">
 
-    <LinearLayout
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <EditText
-
-            android:layout_marginTop="150dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:id="@+id/editRgm"
+        <ImageView
+            android:layout_marginTop="70dp"
+            android:id="@+id/logo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Seu RGM: "
-            android:textColorHint="@color/black"
-            android:imeOptions="actionNext"
+            android:layout_height="150dp"
+            app:srcCompat="@drawable/logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             />
+
+        <View
+            android:id="@+id/containerComponents"
+            style="@style/ContainerComponents"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo"
+            />
+        <EditText
+            android:id="@+id/editRgm"
+            style="@style/Edit_Text"
+            android:hint="RGM"
+
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/containerComponents"
+            app:layout_constraintEnd_toEndOf="@+id/containerComponents"
+            app:layout_constraintTop_toTopOf="@+id/containerComponents"
+            android:imeOptions="actionNext"/>
 
         <EditText
             android:id="@+id/editSenha"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            style="@style/Edit_Text"
+            android:hint="Senha"
             android:inputType="textPassword"
-            android:hint="Sua Senha: "
-            android:textColorHint="@color/black"
-            android:imeOptions="actionDone"
-            />
+            app:layout_constraintStart_toStartOf="@+id/containerComponents"
+            app:layout_constraintEnd_toEndOf="@+id/containerComponents"
+            app:layout_constraintTop_toBottomOf="@+id/editRgm"
+            android:imeOptions="actionDone"/>
 
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/recp"
+            android:layout_width="350dp"
             android:layout_margin="10dp"
             android:layout_height="60dp"
-            android:background="@color/teal_700"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@+id/containerComponents"
+            app:layout_constraintTop_toBottomOf="@id/editSenha"
+            tools:ignore="MissingConstraints"
+            android:background="@color/white"
+            >
 
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/recaptcha_logo" />
+                android:src="@drawable/recaptcha_logo"/>
 
             <CheckBox
                 android:id="@+id/ckCaptcha"
@@ -64,29 +81,27 @@
                 android:textSize="16sp"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEntrar"
+            style="@style/Button"
+            android:text="@string/entar"
 
-            >
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recp"
+            />
 
-            <Button
-                android:id="@+id/btnEntrar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="Entrar" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCadastrar"
+            style="@style/Button"
+            android:text="@string/cadastrar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnEntrar"
+            />
 
-            <Button
-                android:id="@+id/btnCadastrar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:text="Cadastrar" />
-        </LinearLayout>
 
-    </LinearLayout>
 
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
