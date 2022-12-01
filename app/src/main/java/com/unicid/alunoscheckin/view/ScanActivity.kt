@@ -4,12 +4,17 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.zxing.integration.android.IntentIntegrator
 import com.unicid.alunoscheckin.R
 
 class ScanActivity : AppCompatActivity() {
+
+    var i: Int? = null
+
 
     private val obterResultado = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         val intentResult = IntentIntegrator.parseActivityResult(it.resultCode, it.data)
@@ -28,5 +33,16 @@ class ScanActivity : AppCompatActivity() {
         val integrator: IntentIntegrator = IntentIntegrator(this)
         integrator.setPrompt("Leitura de QRCode")
         obterResultado.launch(integrator.createScanIntent())
+
+
+        var it = intent
+        var num = it.getIntExtra("presenca", 0)
+
+        find(num)
+    }
+
+    fun find(num: Int?){
+        var textView: TextView = findViewById(R.id.textView)
+        textView.text = ""+num
     }
 }

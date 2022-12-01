@@ -26,6 +26,7 @@ public class AppDataBase extends SQLiteOpenHelper {
     static Intent intent;
 
     static SQLiteDatabase sqLiteDatabase;
+    static Cursor cursor;
 
     public AppDataBase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -45,6 +46,7 @@ public class AppDataBase extends SQLiteOpenHelper {
             sqLiteDatabase.execSQL(CursaDataModel.queryCreateTable());
             Log.i(TAG, "onCreate: "+CursaDataModel.queryCreateTable());
 
+            sqLiteDatabase.execSQL("SELECT REGISTRO_ALUNO FROM ALUNOS WHERE ID = 1");
 
 
         } catch(SQLiteException e){
@@ -69,21 +71,16 @@ public class AppDataBase extends SQLiteOpenHelper {
         return result;
     }
 
-    public static String autenticaUsuario(Alunos alunos){
+    public static Boolean validarLogin(String rgm, String senha){
+        cursor = sqLiteDatabase.rawQuery("SELECT REGISTRO_ALUNO, SENHA FROM ALUNOS WHERE REGISTRO_ALUNO = ? AND SENHA = ?", new String[] {rgm, senha});
 
-        String query_select = "SELECT * FROM ALUNOS WHERE REGISTRO_ALUNO = '"+LoginActivity.editRgm.getText().toString()+"' AND SENHA = '"+LoginActivity.editSenha.getText().toString()+"' ";
-
-        Cursor cursor = sqLiteDatabase.rawQuery(query_select, null);
-        while(cursor.moveToNext()){
-            if(alunos.getRegistroAluno().equals(cursor.getColumnIndex("REGISTRO_ALUNO"))){
-                if(alunos.getSenha().equals(cursor.getColumnIndex("SENHA"))){
-                    return "sucesso autenticação";
-                }
-            }
+        if(cursor.getCount() > 0) {
+            return true;
+        } else {
+            return false;
         }
-
-        cursor.close();
-        return "falhou autenticação";
     }
+
+
 
 }

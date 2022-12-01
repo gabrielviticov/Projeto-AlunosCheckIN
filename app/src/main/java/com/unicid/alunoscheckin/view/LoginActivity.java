@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.unicid.alunoscheckin.R;
 import com.unicid.alunoscheckin.controller.AlunosController;
 import com.unicid.alunoscheckin.controller.DisciplinasController;
+import com.unicid.alunoscheckin.datamodel.AlunosDataModel;
 import com.unicid.alunoscheckin.datasource.AppDataBase;
 import com.unicid.alunoscheckin.model.Alunos;
 import com.unicid.alunoscheckin.model.Disciplinas;
@@ -51,6 +53,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     Alunos alunos;
     AlunosController alunosController;
     public static final String TAG = "@ALUNOS_CHECKIN";
+    String return_rgm;
+    String return_senha;
+    AppDataBase appDataBase;
+    SQLiteDatabase sqLiteDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +72,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         disciplinasController = new DisciplinasController(getApplicationContext());
         alunosController = new AlunosController(getApplicationContext());
 
+
+    }
+
+    protected void select(){
 
     }
 
@@ -127,54 +137,16 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     String rgm = editRgm.getText().toString();
                     String senha = editSenha.getText().toString();
 
-                    /*
-                    if(rgm.equals("ER98E4") || rgm.equals("er98e4")){
-                        if(senha.equals("3304578")){
-                            intent = new Intent(LoginActivity.this, AlunosDashboard.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                    appDataBase = new AppDataBase(getApplicationContext());
 
-                    if(rgm.equals("MR56P4") || rgm.equals("mr56p4")){
-                        if(senha.equals("103050")){
-                            intent = new Intent(LoginActivity.this, AlunosDashboard.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    if(rgm.equals("SE70W2") || rgm.equals("se70w2")){
-                        if(senha.equals("santana3030")){
-                            intent = new Intent(LoginActivity.this, AlunosDashboard.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(LoginActivity.this, "RGM e/ou Senha estão incorretos!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    if(rgm.equals("JH74K1") || rgm.equals("jh74k1")){
-                        if(senha.equals("maria123")){
-                            intent = new Intent(LoginActivity.this, AlunosDashboard.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-                    */
-                if(alunos.getRegistroAluno().equals(rgm)){
-                    if(alunos.getSenha().equals(senha)){
-                        intent = new Intent(LoginActivity.this, AlunosDashboard.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }
+                    Boolean validar = AppDataBase.validarLogin(rgm, senha);
 
 
+                    if(validar){
+                        //INTENT
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Falha no Login!", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
