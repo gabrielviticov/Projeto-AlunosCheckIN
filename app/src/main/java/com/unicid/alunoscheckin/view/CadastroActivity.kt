@@ -64,7 +64,7 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     fun customizeElements(){
-        editRegistro.hint = "Seu RA: "
+        editRegistro.hint = "Seu RGM: "
         editNome.hint = "Seu Nome: "
         editCpf.hint = "Seu CPF: "
         editDtaNascimento.hint = "Sua data de nascimento: "
@@ -75,6 +75,11 @@ class CadastroActivity : AppCompatActivity() {
 
         btnCadastrar.text = "Cadastrar"
         btnVoltar.text = "Voltar"
+
+        editRegistro.error = "Campo Obrigatório"
+        editNome.error = "Campo Obrigatório"
+        editEmail.error = "Campo Obrigatório"
+        editSenha.error = "Campo Obrigatório"
 
 
     }
