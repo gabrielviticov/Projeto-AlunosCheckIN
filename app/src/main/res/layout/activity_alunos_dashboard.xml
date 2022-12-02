@@ -1,109 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#a0bbf1"
+   android:background="@drawable/background"
     android:scrollbarSize="4dp"
-
     tools:context=".view.AlunosDashboard" >
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/title_selecione"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selecione a mátéria "
+            android:textSize="34sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginTop="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
             android:id="@+id/txtPrj1"
-            android:background="#8BC34A"
-            android:layout_marginTop="120dp"
+            android:background="@color/azul1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="Projeto Interdisciplinar I" />
+            android:text="Projeto Interdisciplinar I"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/title_selecione"
+            />
+
 
         <TextView
-
             android:id="@+id/txtPrj2"
-            android:layout_marginTop="10dp"
-            android:background="#8BC34A"
+            android:background="@color/azul1"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:clickable="true"
-            android:text="Projeto Interdisciplinar II" />
+            android:text="Projeto Interdisciplinar II"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/txtPrj1"/>
 
         <TextView
-            android:layout_marginTop="10dp"
             android:id="@+id/txtPrj3"
+            android:background="@color/azul1"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:background="#8BC34A"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:clickable="true"
-            android:text="Projeto Interdisciplinar III" />
+            android:text="Projeto Interdisciplinar III"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/txtPrj2"/>
 
         <TextView
             android:id="@+id/txtPrj4"
-            android:layout_marginTop="10dp"
+            android:background="@color/azul1"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:background="#8BC34A"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:clickable="true"
-            android:text="Projeto Interdisciplinar IV" />
+            android:text="Projeto Interdisciplinar IV"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/txtPrj3"/>
 
         <TextView
             android:id="@+id/txtAlp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:background="#8BC34A"
+            android:background="@color/azul1"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:text="Algoritmo e Lógica de Programação " />
+            android:text="Algoritmo e Lógica de Programação "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/txtPrj4"/>
 
         <TextView
             android:id="@+id/txtBd"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:background="#8BC34A"
+            android:background="@color/azul1"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:text="Banco de Dados" />
+            android:text="Banco de Dados"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/txtAlp"/>
 
         <TextView
             android:id="@+id/txtAps1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#8BC34A"
+            android:layout_marginTop="15dp"
             android:clickable="true"
-            android:text="Análise e Projeto de Sistemas I" />
+            android:background="@color/azul1"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:text="Análise e Projeto de Sistemas I"
+            app:layout_constraintTop_toBottomOf="@+id/txtBd"/>
 
         <TextView
             android:id="@+id/txtAps2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#8BC34A"
+            android:layout_marginTop="15dp"
+            android:background="@color/azul1"
+            android:textColor="@color/black"
             android:clickable="true"
-            android:text="Análise e Projeto de Sistemas II" />
+            android:textSize="20sp"
+            android:text="Análise e Projeto de Sistemas II"
+            app:layout_constraintTop_toBottomOf="@+id/txtAps1"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnNext"
-            android:layout_width="173dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="20dp"
-            android:background="#8BC34A"
-            android:clickable="true"
-            android:gravity="right"
+            style="@style/Button2"
+            android:layout_marginTop="50dp"
             android:text="Histórico de Frequencia"
-            app:srcCompat="@drawable/ic_baseline_navigate_next_24" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAps2"
+            app:srcCompat="@drawable/ic_baseline_navigate_next_24"/>
 
 
-    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-</LinearLayout>
+</ScrollView>
