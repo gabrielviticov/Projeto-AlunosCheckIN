@@ -68,9 +68,7 @@ class ScanActivity : AppCompatActivity() {
 
         textNomeUsuario = findViewById(R.id.textNomeUsuario)
 
-        val bundle = intent.extras
-
-        textNomeUsuario.text = ""+bundle?.getString("nomeAluno")
+        
 
 
 

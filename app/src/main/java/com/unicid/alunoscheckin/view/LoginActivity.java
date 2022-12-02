@@ -137,10 +137,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         intent = new Intent(LoginActivity.this, AlunosDashboard.class);
 
-                        Bundle bundle = new Bundle();
-                        String nomeAluno = AppDataBase.boasVindasUsuario(rgm);
-                        bundle.putString("nomeAluno", AppDataBase.boasVindasUsuario(rgm));
-                        intent.putExtras(bundle);
+
 
                         startActivity(intent);
                         finish();

@@ -44,6 +44,7 @@ public class AlunosDashboard extends AppCompatActivity {
         navigatorTextViews();
 
 
+
     }
 
     protected void findElementsById(){
