@@ -123,6 +123,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Boolean validar = AppDataBase.validarLogin(rgm, senha);
 
 
+
+
+
+
+
+
                     if(validar){
                         Toast.makeText(LoginActivity.this,  "Seja bem Vindo: "+AppDataBase.boasVindasUsuario(rgm), Toast.LENGTH_SHORT).show();
 
@@ -130,6 +136,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         editSenha.setTextColor(Color.GREEN);
 
                         intent = new Intent(LoginActivity.this, AlunosDashboard.class);
+
+
+
                         startActivity(intent);
                         finish();
                     } else {
