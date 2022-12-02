@@ -55,7 +55,6 @@ public class AlunosDashboard extends AppCompatActivity {
         Bd = findViewById(R.id.txtBd);
         Aps1 = findViewById(R.id.txtAps1);
         Aps2 = findViewById(R.id.txtAps2);
-        btnNext = findViewById(R.id.btnNext);
 
     }
 
@@ -68,7 +67,7 @@ public class AlunosDashboard extends AppCompatActivity {
                 intent = new Intent(AlunosDashboard.this, ScanActivity.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                     qntPresenca = extras.getInt("presenca",0);
+                    qntPresenca = extras.getInt("presenca",0);
                     qntPresenca2 = extras.getInt("presenca2",0);
                     qntPresenca3 = extras.getInt("presenca3",0);
                     qntPresenca4 = extras.getInt("presenca4",0);
@@ -302,14 +301,7 @@ public class AlunosDashboard extends AppCompatActivity {
             }
         });
 
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent = new Intent(AlunosDashboard.this, AlunosDashboard2.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
 
     }
 
