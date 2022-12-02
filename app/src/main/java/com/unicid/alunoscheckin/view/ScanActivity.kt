@@ -138,6 +138,11 @@ class ScanActivity : AppCompatActivity() {
 
 
 
+        val btnsair: Button = findViewById(R.id.btnFechar)
+        btnsair.setOnClickListener{
+            startActivity(iti)
+            finish()
+        }
 
 
 
