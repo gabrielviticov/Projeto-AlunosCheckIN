@@ -57,6 +57,7 @@ public class AlunosDashboard extends AppCompatActivity {
         Bd = findViewById(R.id.txtBd);
         Aps1 = findViewById(R.id.txtAps1);
         Aps2 = findViewById(R.id.txtAps2);
+        btnNext = findViewById(R.id.btnNext);
 
     }
 
